@@ -144,7 +144,7 @@ function calculateWeight() {
                     
                     // حساب الوزن: الوزن = الطول × المساحة × الكثافة
                     weight1 = (lengthHexagon / 1000) * areaHexagon * (density); // kg
-                    weight = weight1/1000; // kg
+                    weight = weight1.toFixed(3);
                     break;
                 }
                 
