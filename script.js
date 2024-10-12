@@ -142,7 +142,7 @@ function calculateWeight() {
                 
                     // إضافة صورة
                     const img = document.createElement("img");
-                    img.src = "D:\app_steel\images\t_profile.png"; // المسار إلى الصورة
+                    img.src = "images/t_profile.png"; // المسار إلى الصورة
                     img.alt = "t_profile"; // نص بديل للصورة
                     img.style.width = "200px"; // تعيين عرض الصورة (يمكنك تعديله حسب الحاجة)
                     img.style.height = "auto"; // تعيين ارتفاع الصورة ليبقى متناسبًا
