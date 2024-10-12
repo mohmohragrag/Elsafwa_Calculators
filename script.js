@@ -51,6 +51,7 @@ function calculateWeight() {
     const sectionType = document.getElementById("sectionType").value;
     const fields = document.getElementById("fields").children;
     const density = 7850; // kg/m³ for steel
+    let weight1 = 0;
     let weight = 0;
 
     if (sectionType && fields.length > 0) {
@@ -142,7 +143,8 @@ function calculateWeight() {
                     const areaHexagon = (3 * Math.sqrt(3) / 2) * Math.pow((sideLength/1000), 2);
                     
                     // حساب الوزن: الوزن = الطول × المساحة × الكثافة
-                    weight = (lengthHexagon / 1000) * areaHexagon * (density); // kg
+                    weight1 = (lengthHexagon / 1000) * areaHexagon * (density); // kg
+                    weight = weight1/1000; // kg
                     break;
                 }
                 
