@@ -74,7 +74,12 @@ function calculateWeight() {
                 break;
 
             case "Seamless Steel Pipes - Circular":
-                    const [lengthPipe, outerDiameter, thicknessPipe] = values;
+                    const [lengthPipe1, outerDiameter1, thicknessPipe1] = values; // لا تكرر المتغيرات
+                
+                    // تحويل القيم من مليمتر إلى متر
+                    const lengthPipe = lengthPipe1 / 1000;
+                    const outerDiameter = outerDiameter1 / 1000;
+                    const thicknessPipe = thicknessPipe1 / 1000;
                 
                     // التأكد من أن جميع القيم أكبر من الصفر
                     if (lengthPipe <= 0 || outerDiameter <= 0 || thicknessPipe <= 0) {
@@ -82,13 +87,14 @@ function calculateWeight() {
                         return; // الخروج إذا كانت القيم غير صالحة
                     }
                 
-                    // إضافة 20 مم على الطول (بالملليمتر) ثم تحويله إلى متر
-                    const adjustedLength = (lengthPipe + 20) / 1000; // الطول بعد إضافة 20 مم وتحويله إلى متر
+                    // إضافة 20 مم على الطول وتحويله إلى متر
+                    const adjustedLength = lengthPipe + (20 / 1000); // تحويل 20 مم إلى متر
                 
-                    // حساب الوزن مع إدخال القيم بالمليمتر وتحويلها إلى متر
-                    weight = ((outerDiameter - thicknessPipe) * thicknessPipe * adjustedLength * 0.025) / 1000; // الوزن بوحدات الكيلوغرام
+                    // حساب الوزن
+                    weight = (outerDiameter - thicknessPipe) * thicknessPipe * adjustedLength * 0.025; // الوزن بوحدات الكيلوغرام
                 
                     break;
+                
                 
                 
                 
