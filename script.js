@@ -135,17 +135,16 @@ function calculateWeight() {
                 break;
 
             case "Hexagonal Sections": {
-    const [lengthHexagon, flatToFlatDistance] = values; // المسافة بين الجوانب المتقابلة
-    const sideLength = flatToFlatDistance / Math.sqrt(3); // حساب طول الجانب بناءً على المسافة بين الجوانب المتقابلة
-    
-    // Calculate the area of the hexagonal section
-    const areaHexagon = (3 * Math.sqrt(3) / 2) * Math.pow(sideLength, 2);
-    
-    // Calculate the weight: طول × المساحة × الكثافة (الوزن = الطول × المساحة × الكثافة)
-    weight = lengthHexagon * areaHexagon * (density / 1000000); // kg
-    break;
-}
-
+                    const [lengthHexagon, flatToFlatDistance] = values; // المسافة بين الجوانب المتقابلة
+                    const sideLength = flatToFlatDistance / Math.sqrt(3); // حساب طول الجانب بناءً على المسافة بين الجوانب المتقابلة
+                    
+                    // حساب مساحة المقطع العرضي السداسي
+                    const areaHexagon = (3 * Math.sqrt(3) / 2) * Math.pow((sideLength/1000), 2);
+                    
+                    // حساب الوزن: الوزن = الطول × المساحة × الكثافة
+                    weight = (lengthHexagon / 1000) * areaHexagon * (density); // kg
+                    break;
+                }
                 
                 
 
