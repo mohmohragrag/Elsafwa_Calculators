@@ -134,11 +134,11 @@ function calculateWeight() {
                 break;
 
             case "Hexagonal Sections":
-                const [lengthHexagon, flatToFlatDistance] = values;
-                const sideLength = flatToFlatDistance / Math.sqrt(3);
-                weight = (lengthHexagon / 1000) * ((3 * Math.sqrt(3)) / 2) * Math.pow((flatToFlatDistance / 1000), 2) * density;
-                break;
-
+                    const [lengthHexagon, flatToFlatDistance] = values;
+                    
+                    weight = (lengthHexagon * (Math.sqrt(33) / 2)) * Math.pow((flatToFlatDistance / Math.sqrt(3)), 2) * density / 1000000;
+                    break;
+                
             default:
                 document.getElementById("result").innerHTML = "Please enter valid dimensions.";
                 return;
