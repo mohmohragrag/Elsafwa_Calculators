@@ -136,31 +136,17 @@ function calculateWeight() {
                 break;
 
             
-                case "Hexagonal Sections": {
-                    const [lengthHexagon, flatToFlatDistance] = values; // قراءة القيم المدخلة
-                
-                    // تحويل القيم إلى أرقام
-                    const length = parseFloat(lengthHexagon); // طول الشريط بالمليمتر
-                    const distance = parseFloat(flatToFlatDistance); // المسافة بين الجوانب بالمليمتر
-                
-                    // التحقق من أن القيم أكبر من الصفر
-                    if (length <= 0 || distance <= 0) {
-                        alert("Please enter valid dimensions for all fields. Values must be greater than zero.");
-                        return; // الخروج إذا كانت القيم غير صالحة
-                    }
-                
-                    // حساب طول الجانب بناءً على المسافة بين الجوانب المتقابلة
-                    const sideLength = distance / Math.sqrt(3); 
-                
-                    // حساب مساحة المقطع العرضي السداسي
-                    const areaHexagon = (3 * Math.sqrt(3) / 2) * Math.pow(sideLength / 1000, 2); // تحويل الجانب إلى متر
-                
-                    // حساب الوزن: الوزن = الطول × المساحة × الكثافة
-                    weight = (length / 1000) * areaHexagon * density; // kg
-                
+            case "Hexagonal Sections": {
+                    const [lengthHexagon, flatToFlatDistance] = values; // المسافة بين الجوانب المتقابلة
+                    const sideLength = flatToFlatDistance / Math.sqrt(3); // حساب طول الجانب بناءً على المسافة بين الجوانب المتقابلة
+                    
+                    // Calculate the area of the hexagonal section
+                    const areaHexagon = (3 * Math.sqrt(3) / 2) * Math.pow(sideLength, 2);
+                    
+                    // Calculate the weight: طول × المساحة × الكثافة (الوزن = الطول × المساحة × الكثافة)
+                    weight = lengthHexagon * areaHexagon * (density / 1000000); // kg
                     break;
                 }
-                
                 
                 
                 
