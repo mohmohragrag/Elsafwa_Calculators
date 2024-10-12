@@ -51,7 +51,6 @@ function calculateWeight() {
     const sectionType = document.getElementById("sectionType").value;
     const fields = document.getElementById("fields").children;
     const density = 7850; // kg/m³ for steel
-    let weight1 = 0;
     let weight = 0;
 
     if (sectionType && fields.length > 0) {
@@ -128,6 +127,8 @@ function calculateWeight() {
                 break;
 
             case "T-profile":
+                sectionImage.src = `images/t_profile.png`;
+                sectionImage.style.display = "block";
                 const [lengthT, widthT, heightT, thicknessT] = values;
                 weight = (lengthT / 1000) * (
                     (widthT / 1000 * thicknessT / 1000) +
@@ -147,8 +148,6 @@ function calculateWeight() {
                     weight = lengthHexagon * areaHexagon * (density / 1000000); // kg
                     break;
                 }
-                
-                
                 
 
             default:
