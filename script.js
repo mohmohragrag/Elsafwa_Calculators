@@ -79,12 +79,22 @@ function calculateWeight() {
                 break;
 
             case "Hollow Structural Sections - Square":
-                const [lengthSquare, sideLengthSquare, thicknessSquare] = values;
-                const lengthM = lengthSquare / 1000;
-                const sideLengthM = sideLengthSquare / 1000;
-                const thicknessM = thicknessSquare / 1000;
-                weight = (sideLengthM - thicknessM) * thicknessM * 0.025 * lengthM;
-                break;
+                    const [lengthSquare, sideLengthSquare, thicknessSquare] = values;
+                    const lengthM = lengthSquare / 1000; // Convert length to meters
+                    const sideLengthM = sideLengthSquare / 1000; // Convert side length to meters
+                    const thicknessM = thicknessSquare / 1000; // Convert thickness to meters
+                
+                    // Calculate the outer area (sideLengthM²) minus the hollow inner area ((sideLengthM - 2 * thicknessM)²)
+                    const outerArea = Math.pow(sideLengthM, 2); 
+                    const innerArea = Math.pow((sideLengthM - 2 * thicknessM), 2); 
+                    const crossSectionalArea = outerArea - innerArea; // Subtract inner area from outer area to get the area of the steel section
+                
+                    // Calculate the volume (cross-sectional area * length)
+                    const volume = crossSectionalArea * lengthM;
+                
+                    // Calculate weight (volume * density of steel)
+                    weight = volume * density;
+                    break;
 
             case "Hollow Structural Sections - Rectangular":
                 const [lengthRect, widthRect, heightRect, thicknessRect] = values;
