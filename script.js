@@ -127,14 +127,24 @@ function calculateWeight() {
                 break;
 
             case "T-profile":
-                sectionImage.src = `images/t_profile.png`;
-                sectionImage.style.display = "block";
-                const [lengthT, widthT, heightT, thicknessT] = values;
-                weight = (lengthT / 1000) * (
-                    (widthT / 1000 * thicknessT / 1000) +
-                    ((heightT - thicknessT) / 1000 * thicknessT / 1000)
-                ) * density;
-                break;
+                    const [lengthT, widthT, heightT, thicknessT] = values;
+                    weight = (lengthT / 1000) * (
+                        (widthT / 1000 * thicknessT / 1000) +
+                        ((heightT - thicknessT) / 1000 * thicknessT / 1000)
+                    ) * density;
+                
+                    // إضافة صورة
+                    const img = document.createElement("img");
+                    img.src = "image/t_profile.png"; // المسار إلى الصورة
+                    img.alt = "T-profile"; // نص بديل للصورة
+                    img.style.width = "200px"; // تعيين عرض الصورة (يمكنك تعديله حسب الحاجة)
+                    img.style.height = "auto"; // تعيين ارتفاع الصورة ليبقى متناسبًا
+                
+                    // إضافة الصورة إلى عنصر مناسب في HTML
+                    document.getElementById("imageContainer").appendChild(img); // تأكد من وجود عنصر بهذا المعرف في HTML
+                
+                    break;
+                
 
             
             case "Hexagonal Sections": {
