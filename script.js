@@ -76,13 +76,20 @@ function calculateWeight() {
             case "Seamless Steel Pipes - Circular":
                     const [lengthPipe, outerDiameter, thicknessPipe] = values;
                 
-                    // إضافة 20 مم على الطول
-                    const adjustedLength = lengthPipe + 20; // الطول بعد إضافة 20 مم
+                    // التأكد من أن جميع القيم أكبر من الصفر
+                    if (lengthPipe <= 0 || outerDiameter <= 0 || thicknessPipe <= 0) {
+                        alert("Please enter valid dimensions for all fields. Values must be greater than zero.");
+                        return; // الخروج إذا كانت القيم غير صالحة
+                    }
                 
-                    // حساب الوزن مع إدخال القيم بالمليمتر
-                    weight = (outerDiameter - thicknessPipe) * thicknessPipe * adjustedLength * 0.025; // الوزن بوحدات الكيلوغرام
+                    // إضافة 20 مم على الطول (بالملليمتر) ثم تحويله إلى متر
+                    const adjustedLength = (lengthPipe + 20) / 1000; // الطول بعد إضافة 20 مم وتحويله إلى متر
+                
+                    // حساب الوزن مع إدخال القيم بالمليمتر وتحويلها إلى متر
+                    weight = ((outerDiameter - thicknessPipe) * thicknessPipe * adjustedLength * 0.025) / 1000; // الوزن بوحدات الكيلوغرام
                 
                     break;
+                
                 
                 
 
@@ -142,7 +149,7 @@ function calculateWeight() {
                 
                     // إضافة صورة
                     const img = document.createElement("img");
-                    img.src = "images/t_profile.png"; // المسار إلى الصورة
+                    img.src = "D:\app_steel\images\t_profile.png"; // المسار إلى الصورة
                     img.alt = "t_profile"; // نص بديل للصورة
                     img.style.width = "200px"; // تعيين عرض الصورة (يمكنك تعديله حسب الحاجة)
                     img.style.height = "auto"; // تعيين ارتفاع الصورة ليبقى متناسبًا
