@@ -75,7 +75,6 @@ function calculateWeight() {
 
             case "Seamless Steel Pipes - Circular":
                     const [lengthPipe, outerDiameter, thicknessPipe] = values;
-                    lengthPipe = lengthPipe + 20
                     weight = (outerDiameter - thicknessPipe) * thicknessPipe * lengthPipe * 0.025;
                     break;
                 
